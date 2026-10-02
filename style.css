@@ -1,0 +1,727 @@
+/* ============================================
+   THEO BIDA — "FOUNDER'S TERMINAL" PORTFOLIO
+   Horizontal scroll · Editorial · Terminal
+============================================ */
+:root {
+    --bone: #EFEAE3;
+    --bone-dark: #E2DCD3;
+    --ink: #0F0F0F;
+    --ink-soft: #2A2A2A;
+    --rust: #D8552B;
+    --olive: #4A5D23;
+    --grey: #8A857D;
+    --border: rgba(15, 15, 15, 0.1);
+    --mono: 'JetBrains Mono', monospace;
+    --serif: 'Fraunces', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* We scroll horizontally */
+}
+
+body {
+    font-family: var(--serif);
+    background-color: var(--bone);
+    color: var(--ink);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+.mono { font-family: var(--mono); letter-spacing: 0.02em; }
+.italic { font-style: italic; }
+.outline {
+    -webkit-text-stroke: 2px var(--ink);
+    color: transparent;
+    font-style: italic;
+}
+
+a { color: inherit; text-decoration: none; transition: all 0.3s ease; }
+ul { list-style: none; }
+
+/* ============================================
+   TOP BAR (fixed)
+============================================ */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 44px;
+    background-color: var(--ink);
+    color: var(--bone);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    font-size: 0.7rem;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(239, 234, 227, 0.1);
+}
+.top-bar-left, .top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.top-bar-left { font-family: var(--mono); }
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #C7F464;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(199, 244, 100, 0.7); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(199, 244, 100, 0); }
+}
+.top-bar-right a {
+    color: var(--bone);
+    opacity: 0.7;
+    font-size: 0.85rem;
+}
+.top-bar-right a:hover { opacity: 1; color: var(--rust); }
+@media (max-width: 700px) {
+    .top-bar-center { display: none; }
+    .top-bar { padding: 0 16px; font-size: 0.65rem; }
+}
+
+/* ============================================
+   SIDE RAIL (fixed)
+============================================ */
+.side-rail {
+    position: fixed;
+    top: 44px;
+    left: 0;
+    bottom: 0;
+    width: 70px;
+    background-color: var(--bone);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    z-index: 500;
+}
+.rail-logo {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 1.4rem;
+    letter-spacing: -0.05em;
+}
+.rail-logo span { color: var(--rust); }
+
+.rail-nav {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.rail-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--grey);
+    position: relative;
+    transition: all 0.4s ease;
+}
+.rail-link span { position: relative; z-index: 2; }
+.rail-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    transition: all 0.4s ease;
+}
+.rail-link:hover { color: var(--ink); }
+.rail-link.active {
+    color: var(--bone);
+    background-color: var(--ink);
+}
+.rail-link.active::before {
+    border-color: var(--rust);
+    transform: scale(1.15);
+}
+
+.rail-scroll-hint {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.rail-scroll-hint i {
+    animation: bob 2s infinite;
+}
+@keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+}
+
+@media (max-width: 700px) {
+    .side-rail { display: none; }
+}
+
+/* ============================================
+   HORIZONTAL SCROLL CONTAINER
+============================================ */
+.scroll-container {
+    position: fixed;
+    top: 44px;
+    left: 70px;
+    right: 0;
+    bottom: 0;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+.scroll-container::-webkit-scrollbar { display: none; }
+
+.chapters-track {
+    display: flex;
+    height: 100%;
+    width: max-content;
+}
+
+.chapter {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 60px 80px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* Each chapter is a different width to feel cinematic */
+.chapter-intro { width: 100vw; }
+.chapter-about { width: 100vw; }
+.chapter-work { width: max-content; padding-right: 120px; }
+.chapter-skills { width: 100vw; }
+.chapter-contact { width: 100vw; }
+
+.chapter-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.chapter-label {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.chapter-label .mono {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--rust);
+    font-weight: 700;
+}
+
+.chapter-title {
+    font-size: clamp(3rem, 7vw, 7rem);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 60px;
+}
+.chapter-title em {
+    font-style: italic;
+    font-weight: 900;
+    color: var(--rust);
+}
+
+/* ============================================
+   CHAPTER 01 — INTRO
+============================================ */
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.intro-name {
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+}
+.intro-name .italic { font-style: italic; font-weight: 900; color: var(--rust); }
+.intro-name .outline { font-weight: 900; }
+
+/* Terminal Card */
+.terminal {
+    background-color: var(--ink);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(15, 15, 15, 0.2);
+    font-size: 0.85rem;
+}
+.terminal-header {
+    background-color: #1E1E1E;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.t-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+}
+.t-dot.red { background: #FF5F57; }
+.t-dot.amber { background: #FEBC2E; }
+.t-dot.green { background: #28C840; }
+.terminal-title {
+    margin-left: auto;
+    color: rgba(239, 234, 227, 0.5);
+    font-size: 0.7rem;
+}
+.terminal-body {
+    padding: 24px;
+    color: var(--bone);
+    min-height: 200px;
+    line-height: 1.8;
+}
+.terminal-line { display: flex; gap: 8px; align-items: center; }
+.t-prompt { color: #C7F464; }
+.t-cmd { color: var(--bone); }
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background-color: var(--rust);
+    animation: blink 1s infinite;
+    vertical-align: middle;
+}
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+.terminal-output {
+    margin-top: 12px;
+    color: rgba(239, 234, 227, 0.7);
+    font-size: 0.8rem;
+    white-space: pre-wrap;
+}
+
+.intro-meta {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.meta-item {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 14px;
+}
+.meta-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--grey);
+    min-width: 80px;
+    font-weight: 700;
+}
+.meta-value {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+.intro-footer {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: auto;
+    padding-top: 40px;
+}
+.intro-footer .mono {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--grey);
+    white-space: nowrap;
+}
+.progress-bar {
+    flex: 1;
+    height: 1px;
+    background-color: var(--border);
+    position: relative;
+    max-width: 300px;
+}
+.progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: var(--rust);
+    animation: fillBar 3s ease-in-out infinite;
+}
+@keyframes fillBar {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+/* ============================================
+   CHAPTER 02 — ABOUT
+============================================ */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+.about-text .lead {
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+    line-height: 1.35;
+    font-weight: 300;
+    margin-bottom: 30px;
+    color: var(--ink);
+}
+.about-text p {
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    max-width: 600px;
+}
+.about-text strong {
+    font-weight: 700;
+    background: linear-gradient(transparent 60%, rgba(216, 85, 43, 0.3) 60%);
+    padding: 0 4px;
+}
+
+.about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-top: 20px;
+}
+.stat {
+    border-top: 2px solid var(--ink);
+    padding-top: 20px;
+}
+.stat-num {
+    display: block;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+}
+.stat-lbl {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--grey);
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* ============================================
+   CHAPTER 03 — WORK
+============================================ */
+.work-grid {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+.work-card {
+    width: 340px;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    background-color: var(--bone);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.work-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(15, 15, 15, 0.1);
+    border-color: var(--ink);
+}
+.work-img {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%) contrast(1.05);
+    transition: all 0.6s ease;
+}
+.work-card:hover .work-img {
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.02);
+}
+.work-info {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.work-num {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--rust);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+.work-info h3 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+.work-cat {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--grey);
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+.work-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    flex: 1;
+}
+.work-link {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+.work-link i { transition: transform 0.3s ease; }
+.work-card:hover .work-link { color: var(--rust); }
+.work-card:hover .work-link i { transform: translateX(6px); }
+
+/* ============================================
+   CHAPTER 04 — SKILLS
+============================================ */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1300px;
+}
+.skill-cat {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+}
+.skill-cat-num {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--rust);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 20px;
+}
+.skill-cat h3 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+}
+.skill-cat ul li {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    padding: 8px 0;
+    color: var(--ink-soft);
+    border-bottom: 1px dashed rgba(15, 15, 15, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.skill-cat ul li::before {
+    content: '→';
+    color: var(--rust);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+}
+
+/* ============================================
+   CHAPTER 05 — CONTACT
+============================================ */
+.contact-title {
+    font-size: clamp(2.5rem, 6vw, 6rem) !important;
+    margin-bottom: 80px;
+}
+.contact-title em { font-weight: 900; }
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 80px;
+    margin-bottom: 60px;
+}
+.contact-links {
+    display: flex;
+    flex-direction: column;
+}
+.contact-link {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+.contact-link:hover {
+    padding-left: 15px;
+    border-bottom-color: var(--rust);
+}
+.contact-link-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--grey);
+    font-weight: 700;
+}
+.contact-link-value {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+.contact-link i {
+    color: var(--rust);
+    transition: transform 0.3s ease;
+}
+.contact-link:hover i { transform: translateX(6px); }
+
+.contact-quote {
+    align-self: center;
+    padding-left: 40px;
+    border-left: 2px solid var(--rust);
+}
+.quote-text {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+    line-height: 1.4;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+.quote-text em { font-weight: 900; font-style: italic; color: var(--rust); }
+.quote-author {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--grey);
+    font-weight: 700;
+}
+
+.contact-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.footer-left {
+    display: flex;
+    gap: 40px;
+}
+.footer-left .mono {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--grey);
+    font-weight: 500;
+}
+.footer-right a {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.footer-right a:hover { color: var(--rust); }
+
+/* ============================================
+   RESPONSIVE — MOBILE BECOMES VERTICAL
+============================================ */
+@media (max-width: 900px) {
+    .intro-grid, .about-grid, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .skills-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+    .chapter { padding: 40px 30px; }
+    .chapter-title { font-size: 3rem; margin-bottom: 40px; }
+    .intro-name { font-size: 3.5rem; }
+    .contact-link { grid-template-columns: 1fr auto; gap: 10px; }
+    .contact-link-label { grid-column: 1 / -1; margin-bottom: 4px; }
+    .contact-link-value { font-size: 1.1rem; }
+    .contact-quote { padding-left: 20px; }
+}
+
+/* On mobile we allow natural vertical scroll */
+@media (max-width: 900px) {
+    html, body { overflow: auto; height: auto; }
+    .scroll-container {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+    .chapters-track {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+    .chapter {
+        width: 100% !important;
+        height: auto;
+        min-height: 100vh;
+        padding: 100px 24px 60px;
+    }
+    .work-grid {
+        flex-direction: column;
+        overflow-x: visible;
+    }
+    .work-card { width: 100%; }
+    .contact-link { padding: 18px 0; }
+    .footer-left { flex-direction: column; gap: 10px; }
+}
