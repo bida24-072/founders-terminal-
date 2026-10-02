@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theo Bida — Student Developer · Gaborone</title>
+    <meta name="description" content="Theo Anold Gaopalelwe Bida. BAC student. Building digital products for Botswana.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ============================================
+         FIXED TOP BAR
+    ============================================ -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <span class="live-dot"></span>
+            <span>Available for internships · 2025</span>
+        </div>
+        <div class="top-bar-center">
+            <span class="mono">GABORONE, BW · 24°39'S 25°54'E</span>
+        </div>
+        <div class="top-bar-right">
+            <a href="mailto:theo@example.com"><i class="fas fa-envelope"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <!-- ============================================
+         FIXED SIDE RAIL (Chapter tracker)
+    ============================================ -->
+    <aside class="side-rail">
+        <div class="rail-logo">TB<span>.</span></div>
+        <div class="rail-nav">
+            <a href="#ch-01" class="rail-link active" data-chapter="01"><span>01</span></a>
+            <a href="#ch-02" class="rail-link" data-chapter="02"><span>02</span></a>
+            <a href="#ch-03" class="rail-link" data-chapter="03"><span>03</span></a>
+            <a href="#ch-04" class="rail-link" data-chapter="04"><span>04</span></a>
+            <a href="#ch-05" class="rail-link" data-chapter="05"><span>05</span></a>
+        </div>
+        <div class="rail-scroll-hint">
+            <span>SCROLL</span>
+            <i class="fas fa-arrow-down"></i>
+        </div>
+    </aside>
+
+    <!-- ============================================
+         HORIZONTAL SCROLL CONTAINER
+    ============================================ -->
+    <main class="scroll-container">
+        <div class="chapters-track">
+
+            <!-- ============================================
+                 CHAPTER 01 — INTRO
+            ============================================ -->
+            <section class="chapter chapter-intro" id="ch-01">
+                <div class="chapter-inner">
+                    <div class="intro-grid">
+                        <div class="intro-left">
+                            <div class="chapter-label">
+                                <span class="mono">CH. 01 — INTRODUCTION</span>
+                            </div>
+                            <h1 class="intro-name">
+                                Theo<br>
+                                <span class="italic">Anold</span><br>
+                                Gaopalelwe<br>
+                                <span class="outline">Bida.</span>
+                            </h1>
+                        </div>
+                        <div class="intro-right">
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="t-dot red"></span>
+                                    <span class="t-dot amber"></span>
+                                    <span class="t-dot green"></span>
+                                    <span class="terminal-title mono">~/theo-bida/intro.txt</span>
+                                </div>
+                                <div class="terminal-body mono">
+                                    <div class="terminal-line">
+                                        <span class="t-prompt">theo@bac:~$</span>
+                                        <span class="t-cmd" id="typewriter"></span>
+                                        <span class="cursor"></span>
+                                    </div>
+                                    <div class="terminal-output" id="terminal-output"></div>
+                                </div>
+                            </div>
+
+                            <div class="intro-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label mono">STUDYING</span>
+                                    <span class="meta-value">BAC — Business Analysis & Computing</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label mono">BASED</span>
+                                    <span class="meta-value">Gaborone, Botswana</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label mono">FOCUS</span>
+                                    <span class="meta-value">Web Design · Frontend · Digital Products</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="intro-footer">
+                        <span class="mono">→ SCROLL TO CONTINUE</span>
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 CHAPTER 02 — ABOUT
+            ============================================ -->
+            <section class="chapter chapter-about" id="ch-02">
+                <div class="chapter-inner">
+                    <div class="chapter-label">
+                        <span class="mono">CH. 02 — WHO I AM</span>
+                    </div>
+                    <h2 class="chapter-title">
+                        A student.<br>
+                        A <em>builder.</em><br>
+                        A Motswana.
+                    </h2>
+
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <p class="lead">I'm a Business Analysis & Computing student at BAC with a deep obsession for building things that live on the internet.</p>
+                            <p>While most of my classmates focus on theory, I spend my evenings shipping real websites for real businesses — boutiques, restaurants, lodges, salons. Each project teaches me something new about design, code, and what Botswana actually needs online.</p>
+                            <p>My goal is simple: <strong>prove that world-class digital work can come out of Gaborone</strong>.</p>
+                        </div>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <span class="stat-num">04</span>
+                                <span class="stat-lbl mono">CLIENT-STYLE<br>PROJECTS BUILT</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num">2024</span>
+                                <span class="stat-lbl mono">STARTED<br>DEVELOPING</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num">∞</span>
+                                <span class="stat-lbl mono">HOURS<br>LEARNING</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 CHAPTER 03 — WORK
+            ============================================ -->
+            <section class="chapter chapter-work" id="ch-03">
+                <div class="chapter-inner">
+                    <div class="chapter-label">
+                        <span class="mono">CH. 03 — SELECTED WORK</span>
+                    </div>
+                    <h2 class="chapter-title">
+                        Four brands.<br>
+                        Four <em>worlds.</em>
+                    </h2>
+
+                    <div class="work-grid">
+                        <article class="work-card" data-index="01">
+                            <div class="work-img" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                            <div class="work-info">
+                                <span class="work-num mono">01</span>
+                                <h3>Maatla & Co.</h3>
+                                <p class="work-cat mono">BOUTIQUE · E-COMMERCE</p>
+                                <p class="work-desc">Premium fashion boutique in GameCity Mall. Persistent cart, elegant product grid, black/white/brown identity.</p>
+                                <a href="https://YOUR-USERNAME.github.io/maatla-boutique/" target="_blank" class="work-link">
+                                    VIEW PROJECT <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="work-card" data-index="02">
+                            <div class="work-img" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                            <div class="work-info">
+                                <span class="work-num mono">02</span>
+                                <h3>Phakalane Plate & Bean</h3>
+                                <p class="work-cat mono">RESTAURANT · HOSPITALITY</p>
+                                <p class="work-desc">Warm, Motswana-owned restaurant site with a filterable menu, reservation system, and rich green/gold palette.</p>
+                                <a href="https://YOUR-USERNAME.github.io/phakalane-restaurant/" target="_blank" class="work-link">
+                                    VIEW PROJECT <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="work-card" data-index="03">
+                            <div class="work-img" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                            <div class="work-info">
+                                <span class="work-num mono">03</span>
+                                <h3>Tsholofelo Lodge</h3>
+                                <p class="work-cat mono">HOSPITALITY · BOOKING</p>
+                                <p class="work-desc">Elegant guest lodge in Gaborone. Automatic hero slideshow, room listings, and a full booking system.</p>
+                                <a href="https://YOUR-USERNAME.github.io/tsholofelo-lodge/" target="_blank" class="work-link">
+                                    VIEW PROJECT <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="work-card" data-index="04">
+                            <div class="work-img" style="background-image: url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                            <div class="work-info">
+                                <span class="work-num mono">04</span>
+                                <h3>The Kasi Collective</h3>
+                                <p class="work-cat mono">SALON · BARBERSHOP</p>
+                                <p class="work-desc">Bold, editorial salon site for barbers, nail techs, stylists, and tattoo artists. Masonry gallery + horizontal services strip.</p>
+                                <a href="https://YOUR-USERNAME.github.io/kasi-collective/" target="_blank" class="work-link">
+                                    VIEW PROJECT <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 CHAPTER 04 — SKILLS
+            ============================================ -->
+            <section class="chapter chapter-skills" id="ch-04">
+                <div class="chapter-inner">
+                    <div class="chapter-label">
+                        <span class="mono">CH. 04 — TOOLKIT</span>
+                    </div>
+                    <h2 class="chapter-title">
+                        Tools of<br>
+                        the <em>trade.</em>
+                    </h2>
+
+                    <div class="skills-grid">
+                        <div class="skill-cat">
+                            <span class="skill-cat-num mono">/01</span>
+                            <h3>Frontend</h3>
+                            <ul>
+                                <li>HTML5</li>
+                                <li>CSS3 · Grid & Flexbox</li>
+                                <li>JavaScript (Vanilla)</li>
+                                <li>Responsive Design</li>
+                                <li>CSS Animations</li>
+                            </ul>
+                        </div>
+                        <div class="skill-cat">
+                            <span class="skill-cat-num mono">/02</span>
+                            <h3>Design</h3>
+                            <ul>
+                                <li>Colour Theory</li>
+                                <li>Typography Systems</li>
+                                <li>Layout & Composition</li>
+                                <li>Brand Identity</li>
+                                <li>Figma (Basics)</li>
+                            </ul>
+                        </div>
+                        <div class="skill-cat">
+                            <span class="skill-cat-num mono">/03</span>
+                            <h3>Business & Logic</h3>
+                            <ul>
+                                <li>Systems Analysis</li>
+                                <li>Process Mapping</li>
+                                <li>Requirement Gathering</li>
+                                <li>Data Flow Diagrams</li>
+                                <li>Digital Strategy</li>
+                            </ul>
+                        </div>
+                        <div class="skill-cat">
+                            <span class="skill-cat-num mono">/04</span>
+                            <h3>Deployment & Tools</h3>
+                            <ul>
+                                <li>Git & GitHub</li>
+                                <li>GitHub Pages</li>
+                                <li>VS Code</li>
+                                <li>Chrome DevTools</li>
+                                <li>Basic SEO</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================
+                 CHAPTER 05 — CONTACT
+            ============================================ -->
+            <section class="chapter chapter-contact" id="ch-05">
+                <div class="chapter-inner">
+                    <div class="chapter-label">
+                        <span class="mono">CH. 05 — GET IN TOUCH</span>
+                    </div>
+
+                    <h2 class="chapter-title contact-title">
+                        Let's build<br>
+                        something<br>
+                        <em>worth talking about.</em>
+                    </h2>
+
+                    <div class="contact-grid">
+                        <div class="contact-links">
+                            <a href="mailto:theo@example.com" class="contact-link">
+                                <span class="contact-link-label mono">EMAIL</span>
+                                <span class="contact-link-value">theo.bida@example.com</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="tel:+26771234567" class="contact-link">
+                                <span class="contact-link-label mono">PHONE</span>
+                                <span class="contact-link-value">+267 71 234 567</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#" class="contact-link">
+                                <span class="contact-link-label mono">GITHUB</span>
+                                <span class="contact-link-value">@theo-bida</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#" class="contact-link">
+                                <span class="contact-link-label mono">LINKEDIN</span>
+                                <span class="contact-link-value">Theo Bida</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <div class="contact-quote">
+                            <p class="quote-text">
+                                "I don't just build websites.<br>
+                                I build <em>evidence</em> that Botswana<br>
+                                can compete globally."
+                            </p>
+                            <span class="quote-author mono">— THEO A. G. BIDA</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-footer">
+                        <div class="footer-left">
+                            <span class="mono">DESIGNED & BUILT IN GABORONE</span>
+                            <span class="mono">© 2026 THEO A. G. BIDA</span>
+                        </div>
+                        <div class="footer-right">
+                            <a href="#ch-01">↑ BACK TO TOP</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
